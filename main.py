@@ -1,4 +1,6 @@
 import streamlit as st, sqlite3, datetime#, os ; os.remove('chats.db')
+
+
 con=sqlite3.connect('chats.db')
 cur=con.cursor()
 cur.execute('CREATE TABLE IF NOT EXISTS db(messages TEXT)')
@@ -15,7 +17,7 @@ with col1:
     name=st.text_input('Name')
     message=st.text_area('Message') 
     timestamp=datetime.datetime.now()
-    if st.form_submit_button('Add Message'):
+    if st.form_submit_button('Add Message : '):
       newmsg=f'---  {name}   {timestamp}\n\n{message}\n\n{msg[0]}'
       cur.execute(
         'UPDATE db SET messages=? WHERE rowid=?;', 
